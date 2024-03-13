@@ -4,11 +4,14 @@ import BurguerForm from "@/components/BurguerForm.vue";
 
 const components = { Banner };
 
-const scrollToBottom = () => {
-  const offset = 500;
+const scrollToPosition = () => {
+  const footerHeight = document.querySelector('footer').offsetHeight;
+  const x = 1300;
+  const y = document.body.scrollHeight - window.innerHeight - footerHeight - 20;
   window.scrollTo({
-    top: document.body.scrollHeight,
-    behavior: 'smooth' // Rola suavemente
+    left: x,
+    top: y,
+    behavior: 'smooth'
   });
 };
 
@@ -18,7 +21,22 @@ const scrollToBottom = () => {
 <template>
   <Banner/>
   <div class="main-container">
-    <h1 @click="scrollToBottom">Monte Seu Hamburguer</h1>
+    <h1 @click="scrollToPosition" class="pulse">Monte Seu Hamburguer</h1>
     <BurguerForm/>
   </div>
 </template>
+
+<style scoped>
+.pulse {
+  animation: pulse 1.5s infinite alternate;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+}
+}
+</style>
