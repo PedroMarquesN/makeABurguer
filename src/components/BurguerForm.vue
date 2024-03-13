@@ -1,4 +1,46 @@
 <script setup>
+import {onMounted , ref} from "vue";
+
+const nome = ref('');
+const carne = ref('');
+const carnes = ref('')
+const pao = ref('');
+const paes = ref('')
+const opcionaisData = ref('');
+const opcionaisSelecionados = ref([])
+const msg = ref('');
+const status = "Solicitado"
+
+async function getIngredientes() {
+  const req = await fetch("http://localhost:3000/ingredientes");
+  const data = await req.json()
+
+  carnes.value = data.carnes
+  paes.value = data.paes
+  opcionaisData.value = data.opcionais
+
+}
+
+async function createBurger(e){
+  e.preventDefault()
+
+  const data = {
+    nome: nome.value,
+    carne: carne.value,
+    pao: pao.value,
+    opcionais: opcionaisSelecionados.value,
+    status: "Solicitado"
+  }
+
+  const dataJson = JSON.stringify(data)
+
+}
+
+
+onMounted(() => {
+  getIngredientes()
+})
+
 
 </script>
 
@@ -7,7 +49,7 @@
   <div>
     <p>Componente de Mensagem</p>
     <div>
-      <form action="" id="burger-form">
+      <form action="" id="burger-form" @submit="createBurger">
         <div class="input-container">
           <label for="nome">Nome do Cliente:</label>
           <input type="text" id="nome" name="name" v-model="nome" placeholder="Digite o seu nome..."/>
@@ -16,21 +58,21 @@
           <label for="pao">Escolha o pão:</label>
           <select name="pao" id="pao" v-model="pao">
             <option value="">Selecione o seu pão</option>
-            <option value="integral">Integral</option>
+            <option  v-for="pao in paes" :key="pao.id" :value="pao.tipo">{{ pao.tipo }}</option>
           </select>
         </div>
         <div class="input-container">
           <label for="carne">Escolha o carne:</label>
           <select name="carne" id="carne" v-model="carne">
             <option value="">Selecione o seu carne</option>
-            <option value="bovina">bovina</option>
+            <option v-for="carne in carnes" :key="carne.id" :value="carne.tipo">{{ carne.tipo }}</option>
           </select>
         </div>
         <div id="opcionais-container" class="input-container">
           <label id="opcionais-title" for="opcionais">Escolha os opcionais:</label>
-          <div class="checkbox-container">
-            <input type="checkbox" id="opcionais" name="opcionais" v-model="opcionais" value="salame"/>
-            <span>Salame</span>
+          <div class="checkbox-container" v-for="opcional in opcionaisData" :key="opcional.id">
+            <input type="checkbox" id="opcionais" name="opcionais" v-model="opcionaisSelecionados" :value="opcional.tipo"/>
+            <span>{{ opcional.tipo }}</span>
           </div>
         </div>
         <div class="input-container">
@@ -80,7 +122,7 @@
 
   .checkbox-container {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     width: 50%;
     margin-bottom: 20px;
   }
