@@ -1,12 +1,12 @@
 <script setup>
-import PrimeiroComponente from "@/components/PrimeiroComponente.vue";
-
-
+  import NavBar from "./components/NavBar.vue"
+  import Footer from "@/components/Footer.vue";
 </script>
 
 <template>
-  <h1>ola mundo</h1>
-  <PrimeiroComponente/>
+  <NavBar />
+  <router-view/>
+  <Footer/>
 </template>
 
 <style scoped>
