@@ -11,6 +11,7 @@ const scrollToBottom = () => {
     behavior: 'smooth' // Rola suavemente
   });
 };
+
 </script>
 
 
