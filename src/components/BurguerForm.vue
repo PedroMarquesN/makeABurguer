@@ -41,6 +41,10 @@ async function createBurger(e){
   })
 
   const res = await req.json()
+  nome.value = ''
+  carne.value = ''
+  pao.value = ''
+  opcionaisSelecionados.value = ''
   console.log(res)
 
 }

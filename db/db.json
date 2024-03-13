@@ -111,6 +111,16 @@
         "Cheddar"
       ],
       "status": "Solicitado"
+    },
+    {
+      "id": "6b19",
+      "nome": "pedro nascimento",
+      "carne": "Maminha",
+      "pao": "3 Queijos",
+      "opcionais": [
+        "Tomate"
+      ],
+      "status": "Solicitado"
     }
   ]
 }
