@@ -34,6 +34,15 @@ async function createBurger(e){
 
   const dataJson = JSON.stringify(data)
 
+  const req = await fetch("http://localhost:3000/burgers", {
+    method: "POST",
+    headers: {"Content-type": "application/json"},
+    body: dataJson
+  })
+
+  const res = await req.json()
+  console.log(res)
+
 }
 
 

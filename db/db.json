@@ -65,15 +65,15 @@
   },
   "status": [
     {
-      "id": 1,
+      "id": "1",
       "tipo": "Solicitado"
     },
     {
-      "id": 2,
+      "id": "2",
       "tipo": "Em produção"
     },
     {
-      "id": 3,
+      "id": "3",
       "tipo": "Finalizado"
     }
   ],
@@ -88,7 +88,7 @@
         "Cebola roxa"
       ],
       "status": "Finalizado",
-      "id": 1
+      "id": "1"
     },
     {
       "nome": "João Coelho",
@@ -99,7 +99,18 @@
         "Cebola roxa"
       ],
       "status": "Solicitado",
-      "id": 4
+      "id": "4"
+    },
+    {
+      "id": "a102",
+      "nome": "pedro nascimento",
+      "carne": "Alcatra",
+      "pao": "Italiano Branco",
+      "opcionais": [
+        "Bacon",
+        "Cheddar"
+      ],
+      "status": "Solicitado"
     }
   ]
 }
